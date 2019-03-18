@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 
 <script type="text/javascript">
+// A function which selects a random choice for the computer player
+function computerPlay(){
+  let options = ['paper', 'rock', 'scissors'];
+  let choice = options[Math.floor((Math.random() * 3))];
+  return choice;
+}
+
+function playRound(playerSelection, computerSelection) {
+	// your code here!
+}
+
+const playerSelection = 'rock';
+const computerSelection = computerPlay();
+console.log(playerSelection + " " + computerSelection); // for testing currently
+//console.log(playRound(playerSelection, computerSelection))
 
 </script>
 
