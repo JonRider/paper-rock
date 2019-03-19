@@ -24,35 +24,59 @@ function playRound(playerSelection, computerSelection) {
   else if(playerSelection == 'rock') {
     if (computerSelection == 'paper') {
        roundResult = "You Lose! Paper beats rock.";
+       computerScore++;
     }
     else {
       roundResult = "You Win! Rock beats scissors.";
+      playerScore++;
     }
   }
   /* paper possibilities */
   else if(playerSelection == 'paper') {
     if (computerSelection == 'scissors') {
        roundResult = "You Lose! Scissors beat paper.";
+       computerScore++;
     }
     else {
       roundResult = "You Win! Paper beats rock.";
+      playerScore++;
     }
   }
   /* scissors possibilities */
   else if(playerSelection == 'scissors') {
     if (computerSelection == 'rock') {
        roundResult = "You Lose! Rock beats scissors.";
+       computerScore++;
     }
     else {
       roundResult = "You Win! Scissors beat paper.";
+      playerScore++;
     }
   }
   return roundResult;
 }
 
-const playerSelection = playerPlay();
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection))
+function game(){
+
+  while(playerScore < 5 && computerScore < 5) {
+    const playerSelection = playerPlay();
+    const computerSelection = computerPlay();
+    console.log(playRound(playerSelection, computerSelection));
+    console.log("You: " + playerScore + " | Robot: " + computerScore);
+  }
+
+  if(playerScore == 5) {
+    console.log("You Win!");
+  }
+  else {
+    console.log("You Lose!");
+  }
+}
+
+// start the game
+let playerScore = 0;
+let computerScore = 0;
+game();
 </script>
 
 <head>
