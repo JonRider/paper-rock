@@ -4,31 +4,54 @@
 // A function which selects a random choice for the computer player
 function computerPlay(){
   let options = ['paper', 'rock', 'scissors'];
-  let choice = options[Math.floor((Math.random() * 3))];
-  return choice;
+  let computerSelection = options[Math.floor((Math.random() * 3))];
+  return computerSelection;
+}
+
+function playerPlay() {
+  let playerSelection = prompt("Rock, Paper or scissors?");
+  // TODO : Verify valid choice
+  return playerSelection.toLowerCase();
 }
 
 function playRound(playerSelection, computerSelection) {
-	// your code here!
   let roundResult;
+  /* in case of a tie */
   if (playerSelection == computerSelection) {
     roundResult = playerSelection[0].toUpperCase() + playerSelection.slice(1) + " and " + computerSelection + ". It's a tie!";
-
   }
+  /* rock possibilities */
   else if(playerSelection == 'rock') {
     if (computerSelection == 'paper') {
-       roundResult = "You Lose! Paper beats rock";
+       roundResult = "You Lose! Paper beats rock.";
     }
     else {
-      roundResult = "You Win! Rock beats scissors";
+      roundResult = "You Win! Rock beats scissors.";
+    }
+  }
+  /* paper possibilities */
+  else if(playerSelection == 'paper') {
+    if (computerSelection == 'scissors') {
+       roundResult = "You Lose! Scissors beat paper.";
+    }
+    else {
+      roundResult = "You Win! Paper beats rock.";
+    }
+  }
+  /* scissors possibilities */
+  else if(playerSelection == 'scissors') {
+    if (computerSelection == 'rock') {
+       roundResult = "You Lose! Rock beats scissors.";
+    }
+    else {
+      roundResult = "You Win! Scissors beat paper.";
     }
   }
   return roundResult;
 }
 
-const playerSelection = 'rock';
+const playerSelection = playerPlay();
 const computerSelection = computerPlay();
-//console.log(playerSelection + " " + computerSelection); // for testing currently
 console.log(playRound(playerSelection, computerSelection))
 </script>
 
