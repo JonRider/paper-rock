@@ -6,7 +6,7 @@ function computerPlay(){
 }
 
 function playerPlay() {
-  let playerSelection = prompt("Rock, Paper or scissors?");
+  //let playerSelection = prompt("Rock, Paper or scissors?");
   // TODO : Verify valid choice
   return playerSelection.toLowerCase();
 }
@@ -55,6 +55,7 @@ function playRound(playerSelection, computerSelection) {
 
 function game(){
 
+// Remove the Logic to stop at 5 rounds.
   while(playerScore < 5 && computerScore < 5) {
     const playerSelection = playerPlay();
     const computerSelection = computerPlay();
@@ -73,4 +74,15 @@ function game(){
 // start the game
 let playerScore = 0;
 let computerScore = 0;
+
+// do something when we hit buttons
+let paper = document.querySelector('#paper');
+paper.onclick = () => alert("Paper");
+
+let rock = document.querySelector('#rock');
+rock.onclick = () => alert("Rock");
+
+let scissors = document.querySelector('#scissors');
+scissors.onclick = () => alert("Scissors");
+
 game();
