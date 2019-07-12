@@ -48,12 +48,62 @@ function playRound(playerSelection, computerSelection) {
   console.log(roundResult);
   console.log("Player: " + playerScore);
   //return roundResult;
-  updateScore();
+  updateScore(roundResult);
 }
 
-function updateScore() {
-  document.getElementById("score").innerHTML = playerScore + " : " + computerScore ;
+// update the scoreboard and tell us what happened.
+function updateScore(roundResult) {
+  document.getElementById("score").innerHTML = playerScore + " : " + computerScore;
+  document.getElementById("result").innerHTML = roundResult;
+  // check for win
+  if (playerScore == 5 || computerScore == 5) { end(); }
 }
+
+// end the game
+  function end() {
+    // display end message
+    if (playerScore == 5) {
+      document.getElementById("win").innerHTML = "Congratulations, You Win!!!";
+    }
+    else {
+      document.getElementById("win").innerHTML = "Sorry. You Lose. The Computer beat you!!!";
+    }
+
+    // disable buttons
+    document.getElementById("paper").disabled = true;
+    document.getElementById("rock").disabled = true;
+    document.getElementById("scissors").disabled = true;
+
+    // display reset button
+    document.getElementById("reset").style.visibility = "visible";
+
+    // wait for reset button to be pressed
+    let reset = document.querySelector('#reset');
+    reset.onclick = () => restart();
+  }
+
+// restart the game
+  function restart() {
+    // enable buttons
+    document.getElementById("paper").disabled = false;
+    document.getElementById("rock").disabled = false;
+    document.getElementById("scissors").disabled = false;
+
+    // hide reset button
+    document.getElementById("reset").style.visibility = "hidden";
+
+    // hide win text
+    document.getElementById("win").innerHTML = "";
+
+    // reset score
+    playerScore = 0;
+    computerScore = 0;
+
+    // update score and remove status message
+    updateScore("");
+
+  }
+
 
 // start the game
 let playerScore = 0;
@@ -68,5 +118,3 @@ rock.onclick = () => playRound("rock", computerPlay());
 
 let scissors = document.querySelector('#scissors');
 scissors.onclick = () => playRound("scissors", computerPlay())
-
-//game();
