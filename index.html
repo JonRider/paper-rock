@@ -9,13 +9,36 @@
   body {
     background-color: LightGray;
   }
+
+  h1 {
+    font-size: 66px;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
+
 </style>
   <body>
-    <div style="padding: 100px" align="center">
+    <div class="row" style="padding-top: 100px" align="center">
+      <div class="col" style="padding-left: 200px" align="center">
+        <h2>You</h2>
+      </div>
+      <div class="col" style="padding-right: 200px" align="center">
+        <h2>Computer</h2>
+      </div>
+    </div>
+    <div class="row" style="padding-top: 10px" align="center">
+      <div class="col" align="center">
+        <h1 id="score">0 : 0</h1>
+      </div>
+    </div>
+    <div style="padding: 50px" align="center">
         <button id="paper" type="button" class="btn-lg btn-primary">Paper</button>
         <button id="rock" type="button" class="btn-lg btn-primary">Rock</button>
         <button id="scissors" type="button" class="btn-lg btn-primary">Scissors</button>
     </div>
+
     <script src="resources/js/main.js"></script>
   </body>
 </html>
